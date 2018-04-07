@@ -33,9 +33,9 @@ public class BookController {
 	@ResponseBody
 	public Book update() {
 		Book book = new Book();
-		book.setAuthor("Autor");
+//		book.setAuthor("Autor");
 		bookDao.createBook(book);
-		book.setAuthor("Inny autor");
+//		book.setAuthor("Inny autor");
 		return bookDao.updateBook(book);
 	}
 	
