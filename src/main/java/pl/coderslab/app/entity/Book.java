@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +22,10 @@ public class Book {
 	private String title;
 	private String author;
 	private Double rating;
-	private String publisher;
+	
+	@ManyToOne
+	private Publisher publisher;
+	
 	private String description;
 	
 	public Long getId() {
@@ -48,10 +52,10 @@ public class Book {
 	public void setRating(Double rating) {
 		this.rating = rating;
 	}
-	public String getPublisher() {
+	public Publisher getPublisher() {
 		return publisher;
 	}
-	public void setPublisher(String publisher) {
+	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
 	public String getDescription() {

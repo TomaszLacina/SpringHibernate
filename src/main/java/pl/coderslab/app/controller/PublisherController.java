@@ -23,12 +23,6 @@ public class PublisherController {
 		return publisherDao.createPublisher(new Publisher());
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/createBookJson", produces = "application/json", consumes = "application/json")
-	@ResponseBody
-	public Publisher createJson(@RequestBody Publisher book) {
-		return publisherDao.createPublisher(book);
-	}
-
 	@RequestMapping("/updatePublisher")
 	@ResponseBody
 	public Publisher update() {
@@ -52,3 +46,11 @@ public class PublisherController {
 	}
 
 }
+
+
+
+//git clone https://github.com/TomaszLacina/SpringHibernate.git
+
+
+
+
