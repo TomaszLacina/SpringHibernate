@@ -12,8 +12,11 @@ public class PublisherConverter implements Converter<Long, Publisher> {
 	@Autowired
 	PublisherDao publisherDao;
 	
-	public Publisher convert(Long id) {
-		return publisherDao.findById(id);
+	public Publisher convert(Long id) {	
+		Publisher publisher = new Publisher();
+		publisher.setName("z konwertera");
+		return publisher;
+//		return  publisherDao.findById(id);
 	}
 
 }

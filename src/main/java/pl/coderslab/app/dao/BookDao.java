@@ -1,11 +1,12 @@
 package pl.coderslab.app.dao;
 
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import pl.coderslab.app.entity.Book;
 
@@ -35,5 +36,9 @@ public class BookDao {
 	public void deleteById(Long id) {
 		Book entity = entityManager.find(Book.class, id);
 		entityManager.remove(entity);
+	}
+	
+	public Collection<Book> findAll(){
+		return entityManager.createQuery("SELECT b FROM Book b").getResultList();
 	}
 }

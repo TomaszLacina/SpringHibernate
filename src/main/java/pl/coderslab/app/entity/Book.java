@@ -27,8 +27,7 @@ public class Book {
 	
 	private String title;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-			fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
     private List<Author> authors = new ArrayList<Author>();
 	
 	private Double rating;
