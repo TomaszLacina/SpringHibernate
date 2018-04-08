@@ -50,7 +50,7 @@ public class BookController2 {
 		System.out.println(book.getAuthors().get(0).getName());
 		
 		bookDao.createBook(book);
-		return "form/bookList";
+		return "redirect:/getBookList";
 	}
 	
 	@ModelAttribute("publisherItems")
