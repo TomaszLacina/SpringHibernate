@@ -1,5 +1,8 @@
 package pl.coderslab.app.dao;
 
+import java.util.Collection;
+
+import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -34,5 +37,11 @@ public class PublisherDao {
 	public void deleteById(Long id) {
 		Publisher entity = entityManager.find(Publisher.class, id);
 		entityManager.remove(entity);
+	}
+
+	public Collection<Publisher> findPublishers() {
+		return entityManager
+				.createQuery("SELECT p FROM Publisher p")
+				.getResultList();
 	}
 }
