@@ -7,11 +7,13 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import javax.validation.Validator;
+import javax.validation.groups.Default;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +24,7 @@ import pl.coderslab.app.dao.BookDao;
 import pl.coderslab.app.dao.PublisherDao;
 import pl.coderslab.app.entity.Author;
 import pl.coderslab.app.entity.Book;
+import pl.coderslab.app.entity.BookPropositionGroup;
 import pl.coderslab.app.entity.Publisher;
 
 @Controller
@@ -119,7 +122,7 @@ public class Dzien3Zadania {
 	
 	@RequestMapping(value = "/zad21", 
 			method = RequestMethod.POST)
-	public String processBookForm(@Valid Book book,
+	public String processBookForm(@Validated(Default.class) Book book,
 			BindingResult result) {
 		if(!result.hasErrors()) {
 			bookDao.createBook(book);
@@ -150,6 +153,33 @@ public class Dzien3Zadania {
 		return "form/authorForm";
 	}
 	
+	
+	
+	
+	
+	@RequestMapping(value = "/zad24", 
+			method = RequestMethod.GET)
+	public String propositionList(Model model) {
+		model.addAttribute("books", bookDao.findAll());
+		return "form/bookList";
+	}
+	
+	@RequestMapping(value = "/zad24form", 
+			method = RequestMethod.GET)
+	public String getNewPropositionForm(Model model) {
+		model.addAttribute("book", new Book());
+		return "form/bookForm2";
+	}
+	
+	@RequestMapping(value = "/zad24form", 
+			method = RequestMethod.POST)
+	public String processNewPropositionForm(@Validated(BookPropositionGroup.class) Book proposition, BindingResult result) {
+		if(!result.hasErrors()) {
+			System.out.println("nie ma bledow");
+			bookDao.createBook(proposition);
+		}
+		return "form/bookForm2";
+	}
 	
 	
 	

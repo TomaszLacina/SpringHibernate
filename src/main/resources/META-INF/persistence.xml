@@ -5,6 +5,12 @@
 	version="2.1">
 	<persistence-unit name="bookstorePersistenceUnit">
 		<properties>
+		
+		
+		
+	<property name="javax.persistence.validation.mode" value="NONE" />
+			
+			
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/test" />
 			<property name="javax.persistence.jdbc.user" value="root" />
@@ -14,6 +20,7 @@
 			<property
 				name="javax.persistence.schema-generation.database.action"
 				value="none" />
+
 
 
 			<property name="hibernate.hbm2ddl.auto" value="update" />

@@ -15,6 +15,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.validation.groups.Default;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -31,27 +32,31 @@ public class Book {
 	private Long id; 
 	
 	@NotNull
-	@Size(min = 5)
+	@Size(min = 5, groups = {Default.class, BookPropositionGroup.class})
 	private String title;
 	
-	@NotEmpty
+	@NotEmpty(groups = {Default.class})
 	@ManyToMany(fetch = FetchType.EAGER)
     private List<Author> authors = new ArrayList<Author>();
 	
-	@NotNull
+	@NotNull(groups = {Default.class})
 	@Min(value = 1, message = "{tutaj.wpisujemy.swoj.tekst}")
 	@Max(value = 10)
 	private Double rating;
 	
-	@NotNull
+	@NotNull(groups = {Default.class})
 	@ManyToOne
 	private Publisher publisher;
 	
-	@Size(max = 600)
+	@Size(max = 600, groups = {Default.class, BookPropositionGroup.class})
 	private String description;
 	
-	@Min(value = 1)
+	@Min(value = 1, groups = {Default.class})
 	private Integer pages;
+	
+	private Boolean proposition;
+	
+
 	
 	public Long getId() {
 		return id;
@@ -95,6 +100,12 @@ public class Book {
 	}
 	public void setPages(Integer pages) {
 		this.pages = pages;
+	}
+	public Boolean getProposition() {
+		return proposition;
+	}
+	public void setProposition(Boolean proposition) {
+		this.proposition = proposition;
 	}
 	
 	

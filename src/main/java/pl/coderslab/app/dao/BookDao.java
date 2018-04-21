@@ -19,7 +19,7 @@ public class BookDao {
 	
 	public Book createBook(Book entity) {
 		entityManager.persist(entity);
-		
+
 		return entity;
 	}
 	
