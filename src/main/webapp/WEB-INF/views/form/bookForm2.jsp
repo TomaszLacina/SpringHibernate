@@ -25,6 +25,15 @@
             itemLabel="name">
 		</form:select>
 		
+		<form:input path="description" cssClass="error"/>
+		<form:input path="pages" cssClass="error"/>
+	
+		<form:errors path="title" cssClass="error" element="div"/>
+		<form:errors path="authors" cssClass="error" element="div"/>
+		<form:errors path="rating" cssClass="error" element="div"/>
+		<form:errors path="publisher" cssClass="error" element="div"/>
+		<form:errors path="title" cssClass="error" element="div"/>
+		
 		<input type="submit" value="zapisz ksiazke">
 	
 	</form:form>

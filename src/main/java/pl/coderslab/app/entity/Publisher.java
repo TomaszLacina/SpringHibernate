@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.pl.NIP;
+import org.hibernate.validator.constraints.pl.REGON;
+
 
 @Entity
 @Table(name = "publishers")
@@ -31,6 +34,13 @@ public class Publisher {
 	Long id;
 	String name;
 	
+	@NIP
+	String nip;
+	
+	@REGON
+	String regon;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -49,6 +59,20 @@ public class Publisher {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
+	public String getNip() {
+		return nip;
+	}
+	public void setNip(String nip) {
+		this.nip = nip;
+	}
+	public String getRegon() {
+		return regon;
+	}
+	public void setRegon(String regon) {
+		this.regon = regon;
+	}
+	
+	
 	
 	
 }

@@ -8,6 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.pl.PESEL;
+
+import pl.coderslab.app.IsOldEnough;
 
 @Entity
 public class Author {
@@ -18,15 +25,43 @@ public class Author {
 	@ManyToMany(mappedBy = "authors")
     private List<Book> books = new ArrayList<Book>();
 	
-	private String name;
+	@NotEmpty
+	private String firstName;
 	
+	@NotEmpty
+	private String lastName;
 	
+	@PESEL
+	private String pesel;
+	
+	@Email
+	private String email;
+		
+	@IsOldEnough
+	private Integer yearOfBirth;
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getName() {
-		return name;
+		return firstName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.firstName = name;
 	}
 
 	public Long getId() {
@@ -44,6 +79,32 @@ public class Author {
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
+
+	public String getPesel() {
+		return pesel;
+	}
+
+	public void setPesel(String pesel) {
+		this.pesel = pesel;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Integer getYearOfBirth() {
+		return yearOfBirth;
+	}
+
+	public void setYearOfBirth(Integer yearOfBirth) {
+		this.yearOfBirth = yearOfBirth;
+	}
+	
+	
 	
 	
 }

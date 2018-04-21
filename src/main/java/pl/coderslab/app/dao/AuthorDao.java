@@ -15,6 +15,11 @@ public class AuthorDao {
 	@PersistenceContext
 	EntityManager entityManager;
 	
+	public Author create(Author author) {
+		 entityManager.persist(author);
+		 return author;
+	}
+	
 	public Collection<Author> findAll(){
 		return entityManager
 				.createQuery("SELECT p FROM Author p")

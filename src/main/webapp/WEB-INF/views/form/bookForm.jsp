@@ -9,12 +9,12 @@
 	<h1>Lista</h1>
 
 	<form:form method="post" modelAttribute="book">
-		<form:input path="title" />
-		<form:input path="rating" />
-		<form:select path="publisher.id" 
-			 items="${publishers}"
-             itemValue="id" 
-             itemLabel="name"/>
+		<form:input path="firstName" />
+		<form:input path="lastName" />
+		<form:input path="pesel" />
+		<form:input path="email" />
+		
+		
 		<input type="submit" value="Save">
 	</form:form>
 
