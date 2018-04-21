@@ -66,8 +66,6 @@ public class Dzien4Zadania {
 		Book book = bookRepository.findByTitleIgnoreCase("Elementarz").get(0);
 		sb.append("Po tytule znalazlem " + book.getId() + " tytul pierwszej " + book.getTitle());
 		
-		book = bookRepository.findDistinctByAuthorsIn(new HashSet<>(book.getAuthors())).get(0);
-		sb.append(" Po autorach znalazlem " + book.getId() + " tytul pierwszej " + book.getTitle());
 		
 		book = bookRepository.findByPublisher(book.getPublisher()).get(0);
 		sb.append(" Po pubsliher znalazlem " + book.getId() + " tytul pierwszej " + book.getTitle());
@@ -80,7 +78,14 @@ public class Dzien4Zadania {
 		sb.append("<br/> Po autorach znalazlem " + bookRepository.findDistinctByAuthorsIn(new HashSet<>(book.getAuthors())).size());
 		sb.append("<br/> Po pubsliher znalazlem " + bookRepository.findByPublisherId(book.getPublisher().getId()).size());
 	
-	
+		
+		
+		
+		
+		
+		book = bookRepository.findDistinctByAuthorsIn(new HashSet<>(book.getAuthors())).get(0);
+		sb.append(" Po autorach znalazlem " + book.getId() + " tytul pierwszej " + book.getTitle());
+		
 		return sb.toString();
 	}
 	

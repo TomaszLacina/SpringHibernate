@@ -12,10 +12,21 @@ import pl.coderslab.app.entity.Book;
 import pl.coderslab.app.entity.Publisher;
 
 public interface BookRepository extends JpaRepository<Book, Long>{
+
 	List<Book> findByTitleIgnoreCase(String title);
-	List<Book> findDistinctByAuthorsIn(Set<Author> authors);
 	List<Book> findByPublisher(Publisher publisher);
 	List<Book> findByPublisherId(Long publisherId);
+	List<Book> findDistinctByAuthorsIn(Set<Author> authors);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Query("select b from Book b where b.title = :title")
 	List<Book> szukajDziadu(@Param("title")String title);
