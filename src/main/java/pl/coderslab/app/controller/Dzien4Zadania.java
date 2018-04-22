@@ -1,5 +1,6 @@
 package pl.coderslab.app.controller;
 
+import java.awt.print.Pageable;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +11,7 @@ import javax.validation.Valid;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -97,11 +99,17 @@ public class Dzien4Zadania {
 		StringBuilder sb = new StringBuilder();
 		Book book = bookRepository.findByTitleIgnoreCase("Elementarz").get(0);
 		
-		sb.append("<br/> Po tytule znalazlem " + bookRepository.szukajDziadu("Elementarz").size());		
+		sb.append("<br/> Po tytule znalazlem " + bookRepository.szukajPoTytule("Elementarz").size());		
+		sb.append("<br/> Po tytule znalazlem " + bookRepository.findByTitleOrderByDescriptionAsc("Elementarz").size());		
+		
 		sb.append("<br/> Po pubsliher znalazlem " + bookRepository.szukajPoPublisherze(book.getPublisher().getId()).size());
 		sb.append("<br/> Po pubsliher znalazlem " + bookRepository.szukajPoPublisherze2(book.getPublisher()).size());
+		sb.append("<br/> Po pubsliher authorze " + bookRepository.szukajPoAuthorze(book.getAuthors().get(0), 
+											new PageRequest(0,1)).size()
+				);
 		
 		
+		bookRepository.doStuff(1000);
 		return sb.toString();
 	}
 	// POMOCNICZE RZECZY

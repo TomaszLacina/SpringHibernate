@@ -63,7 +63,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	    registry.addConverter(getPublisherConverter());
 	    registry.addConverter(getAuthorConverter());
 	}
-	
+		
 	@Bean
 	public PublisherConverter getPublisherConverter() {
 	    return new PublisherConverter();
